@@ -19,7 +19,7 @@ class trocar_posicao:
                             self.correspondencias[self.palavras_chaves.index(palavra)]
                             )
                         print(self.correspondencias[self.palavras_chaves.index(palavra)])
-                    else:
+                    else: 
                         posicao = palavras.index(palavra)
                         if posicao == 0:
                             arquivo_out.write(palavra)
