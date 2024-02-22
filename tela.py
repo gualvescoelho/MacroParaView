@@ -1,5 +1,6 @@
 import sys
 from PySide6.QtWidgets import QLabel, QApplication, QWidget, QVBoxLayout, QFormLayout, QLineEdit, QComboBox, QPushButton, QHBoxLayout
+from trocarPosicao import trocarPosicao
 
 class MyWidget(QWidget):
     def __init__(self):
@@ -24,6 +25,7 @@ class MyWidget(QWidget):
         self.confirm_button.clicked.connect(self.confirm_action)
 
     def creatingPoints(self):
+        self.file_name_text = QLineEdit()
         self.Point1_text_input1 = QLineEdit()
         self.Point1_text_input2 = QLineEdit()
         self.Point1_text_input3 = QLineEdit()
@@ -40,6 +42,7 @@ class MyWidget(QWidget):
         self.item_selector.addItems(['PlotOverLine'])
 
     def addingToLayout(self):
+        self.form_layout.addRow("Nome da simulação: ", self.file_name_text)
         self.layoutPoint1.addWidget(self.point1title)
         self.layoutPoint1.addWidget(self.Point1_text_input1)
         self.layoutPoint1.addWidget(self.Point1_text_input2)
@@ -59,13 +62,17 @@ class MyWidget(QWidget):
         self.setLayout(self.layout)
     
     def confirm_action(self):
-        text1 = self.Point1_text_input1.text()
-        text2 = self.Point1_text_input2.text()
-        selected_item = self.item_selector.currentText()
+        tp = trocarPosicao(
+            self.Point1_text_input1.text(),
+            self.Point1_text_input2.text(),
+            self.Point1_text_input3.text(),
+            self.Point2_text_input1.text(),
+            self.Point2_text_input2.text(),
+            self.Point2_text_input3.text(),
+            self.file_name_text.text()
+            )
 
-        print('Texto 1:', text1)
-        print('Texto 2:', text2)
-        print('Item selecionado:', selected_item)
+        tp.change_positions()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

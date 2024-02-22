@@ -1,10 +1,18 @@
-class trocar_posicao:
-    def __init__(self):
+class trocarPosicao:
+    def __init__(self, point1_1, point1_2, point1_3, point2_1, point2_2 ,point2_3, file_name):
         # Inicializações ou configurações podem ser feitas aqui
         self.conteudo = []
-        self.palavras_chaves = ["posicao_x1", "posicao_x2", "posicao_y1", "posicao_y2", "posicao_z1", "posicao_z2", "nome_arquivo", "'nome_arquivo.'"]
-        self.correspondencias = ["4", "4", "0", "0.1","0","0.1", "duto3m"+"OpenFOAM", "duto3m"+".OpenFOAM"] 
-
+        self.palavras_chaves = ["posicao_x1", "posicao_y1", "posicao_z1", "posicao_x2", "posicao_y2", "posicao_z2", "nome_arquivo", "'nome_arquivo.'"]
+        self.correspondencias = [
+            point1_1, 
+            point1_2, 
+            point1_3, 
+            point2_1, 
+            point2_2, 
+            point2_3, 
+            file_name+"OpenFOAM", 
+            file_name+".OpenFOAM"] 
+        
     def load_file(self):
         with open("modelo_alterar_posicao_plot.py", 'r') as arquivo:
             self.conteudo = arquivo.readlines()
@@ -26,13 +34,6 @@ class trocar_posicao:
                         else:
                             arquivo_out.write(" "+palavra)
 
-def main():
-    # Cria uma instância da classe
-    meu_programa = trocar_posicao()
-
-    # Chama a função da classe
-    meu_programa.load_file()
-    meu_programa.write_file()
-
-if __name__ == "__main__":
-    main()
+    def change_positions(self):
+        self.load_file()
+        self.write_file()

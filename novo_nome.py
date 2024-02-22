@@ -9,10 +9,10 @@ from paraview.simple import *
 paraview.simple._DisableFirstRenderCameraReset()
 
 # find source
-duto3mOpenFOAM = FindSource(duto3m.OpenFOAM )
+dutoOpenFOAM = FindSource(duto.OpenFOAM )
 
 # set active source
-SetActiveSource(duto3mOpenFOAM )
+SetActiveSource(dutoOpenFOAM )
 
 # find source
 plotOverLine1 = FindSource('PlotOverLine1')
@@ -30,8 +30,8 @@ lineChartView1 = GetActiveViewOrCreate('XYChartView')
 plotOverLine1Display = GetDisplayProperties(plotOverLine1, view=lineChartView1)
 
 # Properties modified on plotOverLine1
-plotOverLine1.Point1 = [4 ,0 ,0 ]
-plotOverLine1.Point2 = [4 ,0.1 ,0.1 ]
+plotOverLine1.Point1 = [1 ,2 ,3 ]
+plotOverLine1.Point2 = [4 ,5 ,6 ]
 
 # find view
 renderView1 = FindViewOrCreate('RenderView1', viewtype='RenderView')
